@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "cm-certs.name" . }}
+  labels:
+  app: {{ include "cm-certs.name" . }}
+  chart: {{ include "cm-certs.name" . }}
+  release: {{ .Release.Name }}
+  heritage: {{ .Release.Service }}
+data:
+  server.cert: |-
+    {{ .Values.server.certificate }}
